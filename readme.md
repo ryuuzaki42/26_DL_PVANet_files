@@ -1,6 +1,14 @@
-## Script para download all files/projects from PVANet #
+## Script para download all Projects/Class from PVANet #
 PVANet: https://www2.cead.ufv.br/sistemas/pvanet/
 
-Salve the page (Lista de Trabalhos) with the name a.php
+## Save the page (Trabalhos/Projetos/Práticas/Conteúdo) with the name a.php
 
-Run the script: ./dlPVANetFiles.sh to download the files
+### Run the script:
+
+#### To download the class from Conteúdo (acessos: Aluno e Professor)
+
+`./dlPVANetClass.sh`
+
+#### To download the Trabalhos/Projetos/Práticas (acessos: apenas Professor)
+
+`./dlPVANetWork.sh`
