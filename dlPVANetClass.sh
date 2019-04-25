@@ -33,7 +33,7 @@ startPage="https://www2.cead.ufv.br/sistemas/pvanet/"
 filesLink=$(grep "href=" "$fileToWork" | grep "download" | cut -d '=' -f2 | cut -d '/' -f2- | cut -d '"' -f1)
 
 # Convert in array
-filesLinkArray=( $filesLink )
+filesLinkArray=( "$filesLink" )
 
 # get the length of the array
 length=${#filesLinkArray[@]}
