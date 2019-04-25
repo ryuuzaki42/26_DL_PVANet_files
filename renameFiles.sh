@@ -22,7 +22,7 @@
 #
 # Script: Rename the files .txt and .cpp to .c
 #
-# Last update: 24/04/2019
+# Last update: 25/04/2019
 #
 #Tip: Read the readme.md file
 
