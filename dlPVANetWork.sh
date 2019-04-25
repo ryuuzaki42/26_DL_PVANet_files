@@ -35,9 +35,9 @@ filesLink=$(grep "href=\"../files/trabalhos/" "$fileToWork" | cut -d '=' -f5 | c
 fileToDL=$(echo "$filesLink" | rev | cut -d '/' -f1 | rev)
 
 # Convert in array
-matriculaArray=( $matricula )
-filesLinkArray=( $filesLink )
-fileToDLArray=( $fileToDL )
+matriculaArray=( "$matricula" )
+filesLinkArray=( "$filesLink" )
+fileToDLArray=( "$fileToDL" )
 
 
 
