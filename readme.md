@@ -1,14 +1,22 @@
-## Script para download all Projects/Class from PVANet #
-PVANet: https://www2.cead.ufv.br/sistemas/pvanet/
+# Script para facilitar o download de arquivos/projetos/aulas/práticas do PVANet #
 
-## Save the page (Trabalhos/Projetos/Práticas/Conteúdo) with the name a.php
+## PVANet: https://www2.cead.ufv.br/sistemas/pvanet/
 
-### Run the script:
+## Os arquivos são salvos por padrão na pasta: tempDL/
 
-#### To download the class from Conteúdo (acessos: Aluno e Professor)
+## Como utilizar:
+
+### 1 Salve a página (pelo navegador em "salvar página como") que tem os links para baixar os arquivos (Trabalhos/Projetos/Práticas/Conteúdo) com o nome: a.php
+
+### 2 Execute o script para o tipo de específico de conteúdo da página:
+
+### Para baixar arquivos de aulas [página Conteúdo] (Acesso: Aluno(a) e Professor(a))
 
 `./dlPVANetClass.sh`
 
-#### To download the Trabalhos/Projetos/Práticas (acessos: apenas Professor)
+### Para baixar Trabalhos/Projetos/Práticas (Acesso: Apenas Professor(a))
 
 `./dlPVANetWork.sh`
+
+### Se os arquivos forem .txt e .cpp (geralmente as práticas) e quiser renomear eles para .c, execute:
+`./renameFiles.sh tempDL/`
