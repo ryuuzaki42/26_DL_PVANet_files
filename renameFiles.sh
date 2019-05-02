@@ -22,7 +22,7 @@
 #
 # Script: Rename the files .txt and .cpp to .c
 #
-# Last update: 25/04/2019
+# Last update: 02/05/2019
 #
 #Tip: Read the readme.md file
 
@@ -31,13 +31,13 @@ if [ "$folderToWork" == '' ]; then
     echo -e "$RED\\nError: You need pass the folder to work"
 else
     echo -e "\n### Rename *.txt to .c ###\n"
-    for file in "$folderToWork"/*.txt; do 
+    for file in "$folderToWork"/*.txt; do
         echo "$file to ${file::-4}.c"
         mv "$file" "${file::-4}.c"
     done
 
     echo -e "\n### Rename *.cpp to .c ###\n"
-    for file in "$folderToWork"/*.cpp; do 
+    for file in "$folderToWork"/*.cpp; do
         echo "$file to ${file::-4}.c"
         mv "$file" "${file::-2}"
     done

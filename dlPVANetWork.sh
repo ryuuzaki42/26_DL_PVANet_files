@@ -22,7 +22,7 @@
 #
 # Script: Download all files/projects from PVANet
 #
-# Last update: 25/04/2019
+# Last update: 02/05/2019
 #
 #Tip: Read the readme.md file
 
@@ -30,16 +30,16 @@ fileToStart="a.php"
 fileToWork="b.php"
 folderToSave="tempDL"
 
-iconv -f ISO-8859-1 -t UTF-8 "$fileToStart" > "$fileToWork"
+iconv -f ISO-8859-1 -t UTF-8 "$fileToStart" >"$fileToWork"
 
 matricula=$(grep "ER0" "$fileToWork" | cut -d '>' -f2 | cut -d '<' -f1 | cut -d ' ' -f1)
 filesLink=$(grep "href=.*/files/trabalhos/" "$fileToWork" | cut -d '=' -f5 | cut -d '"' -f2)
 fileToDL=$(echo "$filesLink" | rev | cut -d '/' -f1 | rev)
 
 # Convert in array
-mapfile -t matriculaArray <<< "$matricula"
-mapfile -t filesLinkArray <<< "$filesLink"
-mapfile -t fileToDLArray <<< "$fileToDL"
+mapfile -t matriculaArray <<<"$matricula"
+mapfile -t filesLinkArray <<<"$filesLink"
+mapfile -t fileToDLArray <<<"$fileToDL"
 
 # get the length of the array
 length=${#matriculaArray[@]}
