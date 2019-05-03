@@ -22,7 +22,7 @@
 #
 # Script: Download all files/projects from PVANet
 #
-# Last update: 25/04/2019
+# Last update: 02/05/2019
 #
 #Tip: Read the readme.md file
 
@@ -30,12 +30,12 @@ fileToStart="a.php"
 fileToWork="b.php"
 folderToSave="tempDL"
 
-iconv -f ISO-8859-1 -t UTF-8 "$fileToStart" > "$fileToWork"
+iconv -f ISO-8859-1 -t UTF-8 "$fileToStart" >"$fileToWork"
 
 filesLink=$(grep "href=" "$fileToWork" | cut -d '=' -f6 | cut -d '"' -f2 | grep "http")
 
 # Convert in array
-mapfile -t filesLinkArray <<< "$filesLink"
+mapfile -t filesLinkArray <<<"$filesLink"
 
 # get the length of the array
 length=${#filesLinkArray[@]}
@@ -45,7 +45,7 @@ mkdir "$folderToSave"
 cd "$folderToSave" || exit
 
 for ((i = 0; i < "$length"; i++)); do
-    echo -e "\n $(( i + 1)) : wget -c ${filesLinkArray[$i]}\n"
+    echo -e "\n $((i + 1)) : wget -c ${filesLinkArray[$i]}\n"
 
     wget -c "${filesLinkArray[$i]}"
 done
