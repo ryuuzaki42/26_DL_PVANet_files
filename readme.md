@@ -2,7 +2,7 @@
 
 ## PVANet: https://www2.cead.ufv.br/sistemas/pvanet/
 
-## Os arquivos são salvos por padrão na pasta: tempDL/
+## Os arquivos são salvos por padrão na pasta: arquivosBaixados/
 
 ## Como utilizar:
 
@@ -12,11 +12,11 @@
 
 ### Para baixar arquivos de aulas [página Conteúdo] (Acesso: Aluno(a) e Professor(a))
 
-`./dlPVANetClass.sh`
+`./dlPVANetAulas.sh`
 
 ### Para baixar Trabalhos/Projetos/Práticas (Acesso: Apenas Professor(a))
 
-`./dlPVANetWork.sh`
+`./dlPVANetPraticas.sh`
 
-### Se os arquivos forem .txt e .cpp (geralmente as práticas) e quiser renomear eles para .c, execute:
-`./renameFiles.sh tempDL/`
+### Se os arquivos forem .txt e .cpp (práticas) e quiser renomear eles para .c, execute:
+`./renameFiles.sh Pasta/`
