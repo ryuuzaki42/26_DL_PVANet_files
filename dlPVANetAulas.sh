@@ -20,35 +20,43 @@
 #
 # Livre(FSF) Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #
-# Script: Download all files/projects from PVANet
+# Script: Baixe todos arquivos de aulas do PVANet
 #
-# Last update: 02/05/2019
+# Last update: 03/05/2019
 #
-#Tip: Read the readme.md file
+# Dica: Leia o arquivo readme.md
 
 fileToStart="a.php"
 fileToWork="b.php"
-folderToSave="tempDL"
+startPage="https://www2.cead.ufv.br/sistemas/pvanet/"
 
-iconv -f ISO-8859-1 -t UTF-8 "$fileToStart" >"$fileToWork"
+# Convert to UTF-8
+iconv -f ISO-8859-1 -t UTF-8 "$fileToStart" > "$fileToWork"
 
-filesLink=$(grep "href=" "$fileToWork" | cut -d '=' -f6 | cut -d '"' -f2 | grep "http")
+filesLink=$(grep "href=.*/files/conteudo/" "$fileToWork" | cut -d '=' -f6 | cut -d '/' -f2- | cut -d "'" -f1)
+
+disciplinaNum=$(grep "disciplinas_titulo" "$fileToWork" | cut -d '>' -f4- | cut -d ' ' -f1-2 | tr -d ' ')
+folderToSave="${disciplinaNum}_aulas"
 
 # Convert in array
 mapfile -t filesLinkArray <<<"$filesLink"
 
-# get the length of the array
+# Get the length of the array
 length=${#filesLinkArray[@]}
+
+mkdir "arquivosBaixados" 2> /dev/null
+cd "arquivosBaixados" || exit
 
 # Temp folder to download
 mkdir "$folderToSave"
 cd "$folderToSave" || exit
 
 for ((i = 0; i < "$length"; i++)); do
-    echo -e "\n $((i + 1)) : wget -c ${filesLinkArray[$i]}\n"
+    echo -e "\n # $((i + 1)) de $length : wget -c $startPage${filesLinkArray[$i]}\n"
 
-    wget -c "${filesLinkArray[$i]}"
+    wget -c "$startPage${filesLinkArray[$i]}"
 done
 
-cd .. || exit
+echo -e " # Arquivos salvos em: $(pwd)/\n"
+cd ../.. || exit
 rm "$fileToWork"

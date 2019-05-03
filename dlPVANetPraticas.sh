@@ -20,39 +20,48 @@
 #
 # Livre(FSF) Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #
-# Script: Download all files/projects from PVANet
+# Script: Baixe todos arquivos de práticas/projetos dos alunos do PVANet
 #
-# Last update: 02/05/2019
+# Last update: 03/05/2019
 #
-#Tip: Read the readme.md file
+# Dica: Leia o arquivo readme.md
 
 fileToStart="a.php"
 fileToWork="b.php"
-folderToSave="tempDL"
+startPage="https://www2.cead.ufv.br/sistemas/pvanet/"
 
-iconv -f ISO-8859-1 -t UTF-8 "$fileToStart" >"$fileToWork"
+# Convert to UTF-8
+iconv -f ISO-8859-1 -t UTF-8 "$fileToStart" > "$fileToWork"
 
 matricula=$(grep "ER0" "$fileToWork" | cut -d '>' -f2 | cut -d '<' -f1 | cut -d ' ' -f1)
-filesLink=$(grep "href=.*/files/trabalhos/" "$fileToWork" | cut -d '=' -f5 | cut -d '"' -f2)
+filesLink=$(grep "href=.*/files/trabalhos/" "$fileToWork" | cut -d '=' -f5 | cut -d '"' -f2 | cut -d '/' -f2-)
 fileToDL=$(echo "$filesLink" | rev | cut -d '/' -f1 | rev)
+
+disciplinaNum=$(grep "disciplinas_titulo" "$fileToWork" | cut -d '>' -f4- | cut -d ' ' -f1-2 | tr -d ' ')
+praticaName=$(grep "Tema" "$fileToWork" | cut -d '=' -f3 | cut -d '>' -f2 | cut -d '<' -f1 | sed 's/&.*;//g' | tr -d ' ')
+folderToSave="${disciplinaNum}_$praticaName"
 
 # Convert in array
 mapfile -t matriculaArray <<<"$matricula"
 mapfile -t filesLinkArray <<<"$filesLink"
 mapfile -t fileToDLArray <<<"$fileToDL"
 
-# get the length of the array
+# Get the length of the array
 length=${#matriculaArray[@]}
+
+mkdir "arquivosBaixados" 2> /dev/null
+cd "arquivosBaixados" || exit
 
 # Temp folder to download
 mkdir "$folderToSave"
 cd "$folderToSave" || exit
 
 for ((i = 0; i < "$length"; i++)); do
-    echo -e "\n $((i + 1)) : wget -c ${filesLinkArray[$i]} -O ${matriculaArray[$i]}_${fileToDLArray[$i]}\n"
+    echo -e "\n # $((i + 1)) de $length : wget -c $startPage${filesLinkArray[$i]} -O ${matriculaArray[$i]}_${fileToDLArray[$i]}\n"
 
-    wget -c "${filesLinkArray[$i]}" -O "${matriculaArray[$i]}_${fileToDLArray[$i]}"
+    wget -c "$startPage${filesLinkArray[$i]}" -O "${matriculaArray[$i]}_${fileToDLArray[$i]}"
 done
 
-cd .. || exit
+echo -e " # Arquivos salvos em: $(pwd)/\n"
+cd ../.. || exit
 rm "$fileToWork"
