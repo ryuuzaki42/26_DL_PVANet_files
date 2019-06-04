@@ -22,7 +22,7 @@
 #
 # Script: Baixe todos arquivos de aulas do PVANet
 #
-# Last update: 03/05/2019
+# Last update: 04/06/2019
 #
 # Dica: Leia o arquivo readme.md
 
@@ -33,10 +33,14 @@ startPage="https://www2.cead.ufv.br/sistemas/pvanet/"
 # Convert to UTF-8
 iconv -f ISO-8859-1 -t UTF-8 "$fileToStart" > "$fileToWork"
 
-filesLink=$(grep "href=.*/files/conteudo/" "$fileToWork" | cut -d '=' -f6 | cut -d '/' -f2- | cut -d "'" -f1)
+filesLink=$(grep "href=.*/files/conteudo/" "$fileToWork" | cut -d '=' -f6 | cut -d '/' -f2- | cut -d "\"" -f1)
 
 disciplinaNum=$(grep "disciplinas_titulo" "$fileToWork" | cut -d '>' -f4- | cut -d ' ' -f1-2 | tr -d ' ')
 folderToSave="${disciplinaNum}_aulas"
+
+if echo -e "$filesLink" | grep -q "www2.cead.ufv.br/sistemas/pvanet/"; then
+    filesLink=$(echo -e "$filesLink" | grep "www2.cead.ufv.br/sistemas/pvanet/" | cut -d '/' -f5-)
+fi
 
 # Convert in array
 mapfile -t filesLinkArray <<<"$filesLink"

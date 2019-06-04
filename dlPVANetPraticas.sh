@@ -22,7 +22,7 @@
 #
 # Script: Baixe todos arquivos de práticas/projetos dos alunos do PVANet
 #
-# Last update: 03/05/2019
+# Last update: 04/06/2019
 #
 # Dica: Leia o arquivo readme.md
 
@@ -36,6 +36,10 @@ iconv -f ISO-8859-1 -t UTF-8 "$fileToStart" > "$fileToWork"
 matricula=$(grep "ER0" "$fileToWork" | cut -d '>' -f2 | cut -d '<' -f1 | cut -d ' ' -f1)
 filesLink=$(grep "href=.*/files/trabalhos/" "$fileToWork" | cut -d '=' -f5 | cut -d '"' -f2 | cut -d '/' -f2-)
 fileToDL=$(echo "$filesLink" | rev | cut -d '/' -f1 | rev)
+
+if echo -e "$filesLink" | grep -q "www2.cead.ufv.br/sistemas/pvanet/"; then
+    filesLink=$(echo -e "$filesLink" | grep "www2.cead.ufv.br/sistemas/pvanet/" | cut -d '/' -f5-)
+fi
 
 disciplinaNum=$(grep "disciplinas_titulo" "$fileToWork" | cut -d '>' -f4- | cut -d ' ' -f1-2 | tr -d ' ')
 praticaName=$(grep "Tema" "$fileToWork" | cut -d '=' -f3 | cut -d '>' -f2 | cut -d '<' -f1 | sed 's/&.*;//g' | tr -d ' ')
