@@ -6,17 +6,17 @@
 
 ## Como utilizar:
 
-### 1 Salve a página (pelo navegador em "salvar página como") que tem os links para baixar os arquivos (Trabalhos/Projetos/Práticas/Conteúdo) com o nome: a.php
+### 1 Salve a página (pelo navegador em "salvar página como" ou crtl + s) que tem os links para baixar os arquivos (Trabalhos/Projetos/Práticas/Conteúdo/Material) com o nome: a.php
 
 ### 2 Execute o script para o tipo de específico de conteúdo da página:
 
-### Para baixar arquivos de aulas [página Conteúdo] (Acesso: Aluno(a) e Professor(a))
+### Para baixar arquivos de aulas [página Material]
 
 `./dlPVANetAulas.sh`
 
-### Para baixar Trabalhos/Projetos/Práticas (Acesso: Apenas Professor(a))
+### Para baixar Trabalhos/Projetos/Práticas [página Entrega de Tarefas]
 
 `./dlPVANetPraticas.sh`
 
 ### Se os arquivos forem .txt e .cpp (práticas) e quiser renomear eles para .c, execute:
-`./renameFiles.sh Pasta/`
+`./renameFiles.sh pasta/`
