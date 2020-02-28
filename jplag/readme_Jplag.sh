@@ -3,11 +3,11 @@ JPlag - Detecting Software Plagiarism
 https://github.com/jplag/jplag
 http://www.jplag.de/
 
-$ java -jara jplag-Version -l linguagem -s Pasta
+$ java -jar jplag-Version -l linguagem -s Pasta
 
 $ java -jar jplag-2.11.9-SNAPSHOT-jar-with-dependencies.jar -l c/c++ -s pra3/
 
-$ java -jar jplag-2.11.9-SNAPSHOT-jar-with-dependencies.jar 
+$ java -jar jplag-2.11.9-SNAPSHOT-jar-with-dependencies.jar
 JPlag (Version 2.11.9-SNAPSHOT), Copyright (c) 2004-2015 KIT - IPD Tichy, Guido Malpohl, and others.
 Usage: JPlag [ options ] <root-dir>
  <root-dir>        The root-directory that contains all submissions
