@@ -22,7 +22,7 @@
 #
 # Script: Baixe todos arquivos de práticas/projetos dos alunos do PVANet
 #
-# Last update: 04/06/2019
+# Last update: 29/06/2020
 #
 # Dica: Leia o arquivo readme.md
 
@@ -33,7 +33,7 @@ startPage="https://www2.cead.ufv.br/sistemas/pvanet/"
 # Convert to UTF-8
 iconv -f ISO-8859-1 -t UTF-8 "$fileToStart" > "$fileToWork"
 
-matricula=$(grep "ER0" "$fileToWork" | cut -d '>' -f2 | cut -d '<' -f1 | cut -d ' ' -f1)
+matricula=$(grep ">ER0" "$fileToWork" | cut -d '>' -f2 | cut -d '<' -f1 | cut -d ' ' -f1)
 filesLink=$(grep "href=.*/files/trabalhos/" "$fileToWork" | cut -d '=' -f5 | cut -d '"' -f2 | cut -d '/' -f2-)
 fileToDL=$(echo "$filesLink" | rev | cut -d '/' -f1 | rev)
 
