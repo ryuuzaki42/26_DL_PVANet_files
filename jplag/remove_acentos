@@ -1,0 +1,30 @@
+#!/bin/sed -f
+# Alteração em 19/06/2020, por João Batista Ribeiro
+# remove_acentos - script sed que converte codificação estranha para utf8
+# Modo de utilização:
+# cat aquivoEntrada.tex | ./remove_acentos > aquivoSaida.tex
+#
+# Não faça isso (arquivoEntrada é o mesmo de saída):
+# cat aquivoEntrada.tex | ./remove_acentos > aquivoEntrada.tex
+# Pois irá perder o arquivo.
+#
+s/á/a/g
+s/é/e/g
+s/í/i/g
+s/ó/o/g
+s/ú/u/g
+
+s/ã/a/g
+s/ç/c/g
+
+s/Á/A/g
+s/É/E/g
+s/Í/I/g
+s/Ó/O/g
+s/Ú/U/g
+
+s/Ã/A/g
+s/Ç/C/g
+
+s/﻿/ /g # Espaço estranho
+s/–/-/g
