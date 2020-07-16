@@ -22,12 +22,12 @@
 #
 # Script: Baixe todos arquivos de práticas/projetos dos alunos do PVANet
 #
-# Last update: 29/06/2020
+# Last update: 16/07/2020
 #
 # Dica: Leia o arquivo readme.md
 
-fileToStart="a.php"
-fileToWork="b.php"
+fileToStart="a.html"
+fileToWork="b.html"
 startPage="https://www2.cead.ufv.br/sistemas/pvanet/"
 
 # Convert to UTF-8

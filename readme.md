@@ -6,7 +6,7 @@
 
 ## Como utilizar:
 
-### 1 Salve a página (pelo navegador em "salvar página como" ou crtl + s) que tem os links para baixar os arquivos (Trabalhos/Projetos/Práticas/Conteúdo/Material) com o nome: a.php
+### 1 Salve a página (pelo navegador em "salvar página como" ou crtl + s) que tem os links para baixar os arquivos (Trabalhos/Projetos/Práticas/Conteúdo/Material) com o nome: a.html
 
 ### 2 Execute o script para o tipo de específico de conteúdo da página:
 
