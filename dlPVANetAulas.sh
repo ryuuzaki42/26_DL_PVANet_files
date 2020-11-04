@@ -22,7 +22,7 @@
 #
 # Script: Baixe todos arquivos de aulas do PVANet
 #
-# Last update: 16/07/2020
+# Last update: 04/11/2020
 #
 # Dica: Leia o arquivo readme.md
 
@@ -33,7 +33,7 @@ startPage="https://www2.cead.ufv.br/sistemas/pvanet/"
 # Convert to UTF-8
 iconv -f ISO-8859-1 -t UTF-8 "$fileToStart" > "$fileToWork"
 
-filesLink=$(grep "href=.*/files/conteudo/" "$fileToWork" | cut -d '=' -f6 | cut -d '/' -f2- | cut -d "\"" -f1)
+filesLink=$(grep "class='iframe' href=.*/files/conteudo/" "$fileToWork" | cut -d '=' -f6 | cut -d '/' -f2- | cut -d "'" -f1)
 
 disciplinaNum=$(grep "disciplinas_titulo" "$fileToWork" | cut -d '>' -f4- | cut -d ' ' -f1-2 | tr -d ' ')
 folderToSave="${disciplinaNum}_aulas"
@@ -52,7 +52,7 @@ mkdir "arquivosBaixados" 2> /dev/null
 cd "arquivosBaixados" || exit
 
 # Temp folder to download
-mkdir "$folderToSave"
+mkdir "$folderToSave" 2> /dev/null
 cd "$folderToSave" || exit
 
 for ((i = 0; i < "$length"; i++)); do
