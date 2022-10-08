@@ -22,9 +22,12 @@
 #
 # Script: Rename the files .txt and .cpp to .c
 #
-# Last update: 02/05/2019
+# Last update: 08/10/2022
 #
-#Tip: Read the readme.md file
+# Tip: Read the readme.md file
+#
+set -eE
+trap 'echo -e "\\n\\n${RED}Error at line $LINENO$NC - Command:\\n$RED$BASH_COMMAND\\n"' ERR
 
 folderToWork=$1
 if [ "$folderToWork" == '' ]; then

@@ -22,9 +22,12 @@
 #
 # Script: Baixe todos arquivos de aulas do PVANet
 #
-# Last update: 04/11/2020
+# Last update: 08/10/2022
 #
 # Dica: Leia o arquivo readme.md
+#
+set -eE
+trap 'echo -e "\\n\\n${RED}Error at line $LINENO$NC - Command:\\n$RED$BASH_COMMAND\\n"' ERR
 
 fileToStart="a.html"
 fileToWork="b.html"
