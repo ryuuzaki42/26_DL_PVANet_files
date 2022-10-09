@@ -26,9 +26,6 @@
 #
 # Tip: Read the readme.md file
 #
-set -eEuo pipefail
-trap 'echo -e "\\n\\n\e[1;31mError at line $LINENO\033[0m - Command:\\n\e[1;31m$BASH_COMMAND\033[0m\\n"' ERR
-
 folderToWork=$1
 if [ "$folderToWork" == '' ]; then
     echo -e "$RED\\nError: You need pass the folder to work"

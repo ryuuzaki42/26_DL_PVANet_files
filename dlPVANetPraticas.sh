@@ -26,9 +26,6 @@
 #
 # Dica: Leia o arquivo readme.md
 #
-set -eEuo pipefail
-trap 'echo -e "\\n\\n\e[1;31mError at line $LINENO\033[0m - Command:\\n\e[1;31m$BASH_COMMAND\033[0m\\n"' ERR
-
 fileToStart="a.html"
 fileToWork="b.html"
 startPage="https://www2.cead.ufv.br/sistemas/pvanet/"
